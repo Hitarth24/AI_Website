@@ -68,14 +68,14 @@ textarea {
   resize: none; }
 
 .heading-primary {
-  font-size: 1rem;
+  font-size: 3rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 3px;
   text-align: center; }
   @media only screen and (max-width: 100.5em) {
     .heading-primary {
-      font-size: 1rem; } }
+      font-size: 3rem; } }
 
 .heading-sec__mb-bg {
   margin-bottom: 11rem; }
