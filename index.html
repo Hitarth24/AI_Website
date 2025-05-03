@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AI-Powered Retail Analytics Using Object Detection</title>
+    <meta name="description" content="Blog" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__content">
+        
+        </div>
+        <div class="header__main">
+          <ul class="header__links">
+            <li class="header__link-wrapper">
+              <a href="./index.html#Motivation" class="header__link"> Motivation </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#RelatedWork" class="header__link">Related Work </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#Baseline" class="header__link">Baseline </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#ExperimentalSetup" class="header__link"> Experimental Setup </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#Method" class="header__link">Method </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#Results" class="header__link">Results </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#Demonstration" class="header__link">Demonstration </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#Conclusion" class="header__link">Conclusion </a>
+            </li>
+          </ul>
+          <div class="header__main-ham-menu-cont">
+            <img
+              src="./assets/svg/ham-menu.svg"
+              alt="hamburger menu"
+              class="header__main-ham-menu"
+            />
+            <img
+              src="./assets/svg/ham-menu-close.svg"
+              alt="hamburger menu close"
+              class="header__main-ham-menu-close d-none"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="header__sm-menu">
+        <div class="header__sm-menu-content">
+          <ul class="header__sm-menu-links">
+            <li class="header__sm-menu-link">
+              <a href="./index.html#Motivation"> Motivation </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#RelatedWork"> Related Work </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#Baseline"> Baseline</a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#ExperimentalSetup"> Experimental Setup </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#Method"> Method </a>
+            </li>
+
+            <li class="header__sm-menu-link">
+              <a href="./index.html#Results"> Results </a>
+            </li>
+
+            <li class="header__sm-menu-link">
+              <a href="./index.html#Demonstration"> Demonstration </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#Conclusion"> Conclusion </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section class="home-hero">
+      <div class="home-hero__content">
+        <h1 class="heading-primary">AI-Powered Retail Analytics Using Object Detection</h1>
+        <div class="home-hero__info">
+          <p class="text-primary">
+            Leveraging state-of-the-art object detection models to automate retail shelf monitoring, cart analysis, and store foot-traffic insights by combining YOLOv8 and YOLO-NAS pipelines to deliver real-time, data-driven visibility
+
+          </p>
+        </div>
+        <div class="home-hero__cta">
+          <a href="./#Motivation" class="btn btn--bg">Blog</a>
+        </div>
+      </div>
+      <div class="home-hero__socials">
+        <div class="home-hero__social">
+          <a href="https://github.com/singhaltejas/CSCE625_RetailAI" class="home-hero__social-icon-link">
+            <img
+              src="./assets/png/github-ico.png"
+              alt="icon"
+              class="home-hero__social-icon"
+            />
+          </a>
+        </div>
+        
+         <div class="home-hero__social">
+          <a href="https://docs.google.com/presentation/d/1dVRLCzLEJ2LyMvonNiBg1lJYSkMLOvFgiqbeKlspuck/edit?usp=sharing" class="home-hero__social-icon-link">
+            <img
+              src="./assets/png/slideslogo.png"
+              alt="icon"
+              class="home-hero__social-icon"
+            />
+          </a>
+        </div>
+        
+      </div>
+      <div class="home-hero__mouse-scroll-cont">
+        <div class="mouse"></div>
+      </div>
+    </section>
+  
+
+    <section id="Motivation" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">MOTIVATION</span>
+          <span class="heading-sec__sub">
+            Shopping in a modern grocery store appears seamless to customers: they walk in, pick up what they need, and leave-rarely considering the operational complexity behind the scenes. However, for store managers and retail teams, maintaining profitability and efficiency requires far more than simply tracking sales. Critical business insights like customer behavior patterns, product trends, and anomalies-are often hidden and difficult to extract using traditional methods which is what we plan to tackle.
+            <br>
+            <br>
+            Currently, marketing teams and store managers rely heavily on outdated approaches like manual surveys, in-person observations, and guesswork. These methods are labor-intensive, slow, and often fail to capture the nuanced realities of in-store activity and also, most basic vision models do not work very well on these applications due to complex video footage and the randomness in these videos and images. In particular, what customers place in their carts represents a rich, underutilized source of behavioral data that could drive smarter inventory management, targeted promotions, and improved store layouts. Furthermore analyzing the popular hot spots of the store and what items get picked the most from the shelves also contains this valuable information.
+            <br>
+            <br>
+            Our solution bridges this gap: by deploying AI-powered, real-time cart, shelf, and store monitoring, we aim to deliver actionable insights and immediate visibility into customer interactions. This approach empowers retailers to move beyond reactive, manual processes and embrace data-driven decision-making that enhances both operational efficiency and the overall shopping experience.
+            
+            <br><br>
+            <div class="centered-image-wrapper">
+              <img
+                src="./assets/jpeg/motivation_photo.jpg"
+                alt="icon"
+                class="centered-image"
+              />
+            </div>
+            </span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="RelatedWork" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">RELATED WORK</span>
+        </h2>
+          <div class="heading-sec__sub">
+            <!--add hyperlinks and explanation here-->
+            <a href="https://dl.acm.org/doi/abs/10.1007/978-3-031-20047-2_1" class="links">ByteTrack: Multi-Object Tracking by Associating Every Detection Box</a><br>
+            <ul>
+              <li>Tracks products and people accurately in retail spaces, even with low-confidence detections.</li>
+              <li>Improves inventory movement tracking and in-store analytics</li>
+              <li>Helps optimize store layouts, loss prevention, and customer service</li>
+            </ul><br>
+              <a href="https://ieeexplore.ieee.org/abstract/document/10811707?casa_token=ajIgIM0cHkAAAAAA:C1fi2tXNpg202TvxZKrZuWPTnTaOVu0dgrdbiKBB6G5M0GhMfqonCcxDx1AvqIZ9VmjL0KHA" class="links">Object Detection in Shelf Image of the Retail store using Single Stage Detector</a><br>
+              <ul>
+                <li>Uses YOLOv5 to automatically detect empty shelves, enabling faster restocking</li>
+                <li>Real-time alerts help staff maintain inventory and reduce lost sales</li>
+                <li>Automates shelf monitoring, improving efficiency and customer satisfaction</li>
+              </ul><br>
+            <a href="https://www.infosys.com/iki/techcompass/yolo-product-detection.html" class="links">Revolutionizing Retail Unleashing the Power of Yolo for Product Detection</a><br>
+            <ul>
+              <li>Applies YOLO models for real-time product detection and counting on shelves</li>
+              <li>Automates inventory checks, reducing manual labor and stockouts</li>
+              <li>Enables data-driven decisions for better product placement and customer experience</li>
+            </ul>
+            
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Baseline" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">BASELINE</span>
+        </h2>
+          <div class="heading-sec__sub">
+            <!--add hyperlinks and explanation here-->
+            <h3>Cart Detection</h3>
+            Yolox_s used for video processing and object detection<br><br>
+            <h3>Shelf Detection</h3>
+            YOLOv8 initialized from Ultralytics for object detection and classification in images<br><br>
+            <h3>Store Foot Analyzer</h3>
+            Classic Trackers which using contouring and background subtraction for person detection whilst leveraging using YOLO Models
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section id="ExperimentalSetup" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">EXPERIMENTAL SETUP</span>
+        </h2>
+        <figure class="centered-image-figure">
+          <img
+            src="./assets/png/yolomodel working.png"
+            alt="icon"
+            class="small-centered-image"
+          />
+          <figcaption>
+            Figure 1: Base Architecture
+          </figcaption>
+        </figure><br>
+        
+          <div class="heading-sec__sub">
+            
+            <ol>
+              <li><b>Cart Detection</b> <br>Detecting items in shopping carts using computer vision is one of the first ways we made retail better. We used object detection to identify products placed in shopping carts from retail store images. The entire pipeline was built using Google Colab with GPU acceleration and Python 3 for efficient training. We used SuperGradients framework for training object detection models and. Our dataset is sourced from Roboflow and contains annotated images with YOLO-format bounding boxes for 27 object classes such as Apples, Milk, and Water Bottles, including carts when labeled. To improve the model’s robustness and generalization, we applied data augmentations like random affine transformations, translation, scaling, and shearing. This enables accurate detection of items within shopping carts for automated inventory tracking.</li><br>
+              <br><li><b>Shelf Detection</b> <br>For this objective, we worked within the Google Colab environment using Python 3 and PyTorch, with GPU acceleration enabled when available. The dataset for this part was structured to follow the YOLOv8 format, including a data.yaml file that specified training, validation, and test splits, class names, and class count. This dataset contained 55 new classes along with training, validation and test data to detect and classify these objects. We chose to train on the YOLOv8m model from the Ultralytics suite due to its solid trade-off between speed and accuracy, especially suitable for object detection tasks in retail environments. The training was configured with 50 epochs, a batch size of 16, and an image size of 640x640. Hyperparameters such as learning rate, momentum, and weight decay were tuned to optimize convergence, and early stopping was introduced for 10 epochs to prevent overfitting. All output logs, metrics, checkpoints, and annotated results were organized and stored in a dedicated results directory on Google Drive for tracking throughout the project lifecycle.</li><br>
+              <br><li><b>Store-Foot Analyzer</b> <br>The experimental setup for this objective was implemented within the Google Colab environment, utilizing Python 3 and the PyTorch framework, with GPU acceleration enabled to expedite training. The dataset was reformatted to align with the YOLOv8 standard along with class labels and total class count. This custom dataset comprised 55 novel object whilst recognizing person class objects as well relevant to retail scenarios, each annotated for detection and classification tasks. We selected the YOLOv8m architecture from the Ultralytics model suite, as it offers a balanced compromise between computational efficiency and detection accuracy, making it particularly effective for real-time analysis in retail settings. Training was conducted over 50 epochs with a batch size of 16 and an input resolution of 640×640 pixels. Key hyperparameters, including learning rate, momentum, and weight decay, were fine-tuned to enhance convergence stability. To mitigate overfitting, an early stopping mechanism with a patience threshold of 10 epochs was applied. All training artifacts such as loss metrics, specifically, mAP and IDSWs, were systematically stored.
+              </li>
+            </ul>
+            
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Method" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">METHOD</span>
+        </h2>
+          <div class="heading-sec__sub">
+            <ol>
+              <li><b>Cart Detection</b> <br></li>
+              <ul>
+                <li>First, we selected YOLO-NAS (You Only Look Once- Neural Architecture Search) for object detection in retail store images, due to its strong balance of speed and accuracy.
+                </li>
+                <li>Then, we implemented the pipeline using the SuperGradients library and began with environment setup, installing essential dependencies such as: Super-gradients, Imutils, Roboflow, Compatible PyTorch packages
+                  
+                </li>
+                <li>Next, we loaded our annotated dataset using SuperGradients COCO-format dataloaders, which allowed seamless splitting into training, validation, and test sets.
+                </li>
+                <li>To improve model generalization, we applied and visualized data augmentation techniques, making sure the transformations preserved label accuracy and increased image diversity.
+                </li>
+                <li>During training, we fine-tuned YOLO-NAS using: PPYoloELoss as the loss function, DetectionMetrics_050 for performance evaluation, Post-processing callbacks to refine outputs
+                </li>
+                <li>We incorporated checkpointing and experiment tracking to ensure consistent and reproducible results.
+                </li>
+                <li>Finally, we evaluated the model's performance using mean Average Precision (mAP) and conducted visual inspections of detection outputs to confirm real-world effectiveness.
+                </li>
+              </ul><br><br>
+              <figure class="centered-image-figure">
+                <img
+                  src="./assets/png/cartdetection.png"
+                  alt="icon"
+                  class="small-centered-image"
+                />
+                <figcaption>
+                  Figure 2: Identifying and tracking every item placed in a cart whilst leveraging a memory buffer
+                </figcaption>
+              </figure><br>
+
+              <li><b>Shelf Detection</b> <br>
+                <ul>
+                  <li>First, we loaded and organized the custom dataset with 55 classes, setting up the folder structure and labels for seamless model training and evaluation.</li>
+                  <li>We used YOLOv8's built-in augmentation features and applied techniques like mosaic, mixup, rotation, flipping, HSV color shifts, and scaling. This process helps the model generalize better on different shelf conditions other than pre-trained dataset.
+                  </li>
+                  <li>Once the augmentations were set, we trained and fine-tuned the model on our dataset, adjusting hyperparameters along the way to balance speed and accuracy.
+                  </li>
+                  <li>After training, we validated the model using key performance metrics: precision, recall, mAP@0.5, mAP@0.5:0.95, and F1-score. This was done for both overall and per class so we could really see where the model performed well or struggled.
+                  </li>
+                  <li>We visualized the training performance by plotting loss and metric curves across epochs to spot overfitting or convergence issues.
+                  </li>
+                  <li>For the testing part, we ran inference on all test images, collected class-wise detection counts, and created bar charts and confidence histograms to analyze detection frequency and prediction certainty.                  </li>
+                  <li>Finally, we built a comparison module that takes two shelf images (before and after), runs object detection on both, and compares the product counts; helping us figure out which items were sold or restocked between the two snapshots.</li>
+                </ul><br><br>
+<figure class="centered-image-figure">
+          <img
+            src="./assets/png/shelfdetection.png"
+            alt="icon"
+            class="small-centered-image"
+          />
+          <figcaption>
+            Figure 3: Product detection and count on before and after images
+          </figcaption>
+        </figure><br>
+
+              <li><b>Store-Foot Analyzer</b> <ul>
+                  <li>Each video frame is processed by the YOLOv8 object detection model, which generates bounding boxes and associated confidence scores.</li>
+                  <li>The tracking pipeline first matches high-confidence detections with active trajectories using spatial and appearance-based matching.
+                  </li>
+                  <li>Any unmatched tracks are then compared against low-confidence detections to recover possible missed matches.
+                  </li>
+                  <li>Each detected person is assigned a globally consistent ID that remains the same across all frames and this ID-based tracking allows the system to maintain identity continuity over time and across movement.
+                  </li>
+                  <li>The tracking data enables analysis of individual movement between predefined store zones and the collected information supports behavior analytics, identifying patterns in customer interactions.
+                  </li>
+                  <li>Occupancy heatmaps are generated to visualize which areas of the store receive the most foot traffic.
+
+                                  </li>
+                  <li>The system also models real-time customer flow, helping optimize store layout and operational efficiency.</li>
+                </ul>
+                <figure class="centered-image-figure">
+                  <img
+                    src="./assets/png/objectdetection.png"
+                    alt="icon"
+                    class="small-centered-image"
+                  />
+                  <figcaption>
+                    Figure 4: Blue bounding boxes identify objects (mainly people) and the red rectangles represents the hotzone
+                  </figcaption>
+                </figure><br>
+            </ul>
+            
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Results" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">RESULTS</span>
+        </h2>
+          <div class="heading-sec__sub">
+            <!--add hyperlinks and explanation here-->
+            
+            <ol>
+              <li><b>Cart Detection</b></li>
+              <figure class="centered-image-figure">
+                <img
+                  src="./assets/png/resultscart1.png"
+                  alt="icon"
+                  class="small-centered-image"
+                />
+                <figcaption>
+                  Figure 5: Validation mAP@0.50 steadily increases, indicating improved object detection accuracy as training progresses.
+                </figcaption>
+              </figure><br>
+
+              <figure class="centered-image-figure">
+                <img
+                  src="./assets/png/cartresults2.png"
+                  alt="icon"
+                  class="small-centered-image"
+                />
+                <figcaption>
+                  Figure 6: Validation loss decreases over epochs, reflecting better model fit and reduced prediction error on unseen data.
+                </figcaption>
+              </figure><br>
+
+
+              <figure class="table-figure">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Baseline Model (YOLOX Small)</th>
+                      <th>Our Model</th>
+                      <th>Which is Better</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>mAP</td>
+                      <td>0.4548</td>
+                      <td>0.6470</td>
+                      <td>Our Model</td>
+                    </tr>
+                    <tr>
+                      <td>Precision</td>
+                      <td>0.1882</td>
+                      <td>0.0431</td>
+                      <td>Baseline</td>
+                    </tr>
+                    <tr>
+                      <td>Recall</td>
+                      <td>0.5312</td>
+                      <td>0.8894</td>
+                      <td>Our Model</td>
+                    </tr>
+                    <tr>
+                      <td>F1</td>
+                      <td>0.2693</td>
+                      <td>0.0808</td>
+                      <td>Baseline</td>
+                    </tr>
+                  </tbody>
+                  
+                </table>
+                <figcaption>
+                  Table 1: Compared to the baseline YOLOX Small model, YOLO-NAS achieved significantly higher mAP@0.50 (0.647 vs. 0.455), highlighting its superior detection capability. Also, our model demonstrated a much higher recall (0.889 vs. 0.531), meaning it was highly effective at finding most of the relevant objects. However, this came at the cost of lower precision (0.043 vs. 0.188), suggesting a higher rate of false positives.
+                </figcaption>
+              </figure>
+              
+
+<br>
+
+              <li><b>Shelf Detection</b></li>
+              <figure class="centered-image-figure">
+                <img
+                  src="./assets/png/kunalresults1.png"
+                  alt="icon"
+                  class="small-centered-image"
+                />
+                <figcaption>
+                  Figure 7: mAP@0.5 = 0.958 indicates that our object detection model has very high accuracy at an IoU  threshold of 0.5.
+                </figcaption>
+              </figure><br>
+
+              <figure class="centered-image-figure">
+                <img
+                  src="./assets/png/kunalresults2.png"
+                  alt="icon"
+                  class="small-centered-image"
+                />
+                <figcaption>
+                  Figure 8: Precision-Recall curve for multi-class object detection, highlighting high overall precision across most recall levels.
+                </figcaption>
+              </figure><br>
+
+              <figure class="centered-image-figure">
+                <img
+                  src="./assets/png/kunalresults3.png"
+                  alt="icon"
+                  class="small-centered-image"
+                />
+                <figcaption>
+                  Figure 9: Confidence score plot shows that the majority of detections have high confidence scores, with most clustering around 0.9 and above, indicating strong model certainty.
+                </figcaption>
+              </figure><br>
+<br>
+              <li><b>Store Foot Analyzer</b></li>
+              <figure class="table-figure">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Baseline Model</th>
+                      <th>Our Model</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>mAP</td>
+                      <td>0.4748</td>
+                      <td>0.6111</td>
+                    </tr>
+                    <tr>
+                      <td>ID Switches (IDSW)</td>
+                      <td>130</td>
+                      <td>71</td>
+                    </tr>
+                  </tbody>
+                  
+                </table>
+                <figcaption>
+                  Table 2: Compared to the baseline model, our model had a better accuracy for identifying hotzones (drawing red polygons over highly traversed areas), and our model also lowers the number of times, the tracker mistakenly assigns a new ID to a person.
+                </figcaption>
+              </figure>
+            </ol>
+            
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Demonstration" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">DEMONSTRATION</span>
+          <span class="heading-sec__sub">
+            <video width="100%" height="auto" controls>
+              <source src="./assets/videos/resultdemo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            Video 1: Quick demonstration of the outputs for all three components.
+<br><br><br><br>
+            <video width="100%" height="auto" controls>
+              <source src="./assets/videos/Team9-AI-Retail-Analytics-Code-Demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            Video 2: Detailed demonstration for running the code after cloning components from the provided github repository.
+          </span>
+        </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Conclusion" class="projects sec-pad">
+      <div class="main-container">
+        <h2 class="heading heading-sec heading-sec__mb-bg">
+          <span class="heading-sec__main">CONCLUSION</span>
+          <span class="heading-sec__sub">
+            AI-powered shelf detection helps automate stock monitoring and ensures timely restocking.
+
+
+            Customer footfall analysis using video processing identifies hot zones and product interaction trends.
+            
+            Smart cart detection allows for easy data-entries and a user friendly experience.<br>
+            
+            <b>Combining video insights with sales data enhances decision-making, improves operations, and boosts revenue.</b>
+            <br><br>
+
+            There are still edge cases like video disruption causing problems with memory buffer implementation issues on forward applications like heatmaps.
+
+Our models could used a revamped UI which hides technical information and makes it more user friendly. 
+
+Our models could be implemented in a way that allows for a more seamless experience.
+
+<br><b>But, our models show improvement on baseline and combine to solve a variety of problems.</b>
+
+            
+          </span>
+        </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <footer class="main-footer">
+      <div class="main-container">
+        <div class="main-footer__upper">
+          <div class="main-footer__row main-footer__row-2">
+            <h4 class="heading heading-sm text-lt">Made by: Hitarth Chopra, Tejas Singhal, Kunal SomendraSingh</h4>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
